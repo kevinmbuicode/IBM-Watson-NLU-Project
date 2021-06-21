@@ -29,21 +29,21 @@ app.get("/",(req,res)=>{
     res.render('index.html');
   });
 
-app.get("/url/emotion", (req,res) => {
+app.get("/url/emotion",getNLUInstance(), (req,res) => {
 
-    return res.send({"happy":"90","sad":"10"});
+    return res.json({"happy":"90","sad":"10"});
 });
 
-app.get("/url/sentiment", (req,res) => {
+app.get("/url/sentiment",getNLUInstance(), (req,res) => {
     return res.send("url sentiment for "+req.query.url);
 });
 
-app.get("/text/emotion", (req,res) => {
-    return res.send({"happy":"10","sad":"90"});
+app.get("/text/emotion",getNLUInstance(), (req,res) => {
+    return res.json({"happy":"10","sad":"90"});
 });
 
-app.get("/text/sentiment", (req,res) => {
-    return res.send("text sentiment for "+req.query.text);
+app.get("/text/sentiment",getNLUInstance(), (req,res) => {
+    return res.json("text sentiment for "+ req.query.text);
 });
 
 let server = app.listen(8080, () => {
